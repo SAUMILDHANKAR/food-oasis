@@ -258,7 +258,7 @@ const Announcements = () => {
                     {row.title}
                   </TableCell>
                   <TableCell align="left" component="th" scope="row">
-                    {row.description}
+                    <div dangerouslySetInnerHTML={{ __html: row.description }} />
                   </TableCell>
                   <TableCell align="left" component="th" scope="row">
                     {new Date(row.created_at).toLocaleDateString()}
@@ -340,16 +340,13 @@ const Announcements = () => {
                   {announcementFormik.errors.title}
                 </Typography>
               )}
-              <TextField
-                placeholder="Description"
-                id="description"
-                name="description"
-                label="Description"
-                onChange={announcementFormik.handleChange}
-                value={announcementFormik.values.description}
-                fullWidth
-                margin="normal"
-              />
+              {/* Replace the TextField for description with this */}
+				<Typography variant="body2" sx={{ mt: 2, mb: 1 }}>Description</Typography>
+				<ReactQuill
+				  theme="snow"
+				  value={announcementFormik.values.description}
+				  onChange={(content) => announcementFormik.setFieldValue("description", content)}
+				/>
               {announcementFormik.errors.description && (
                 <Typography sx={{ color: "error.main" }}>
                   {announcementFormik.errors.description}
@@ -426,15 +423,13 @@ const Announcements = () => {
                   {editFormik.errors.title}
                 </Typography>
               )}
-              <TextField
-                placeholder="Description"
-                id="edit-description"
-                name="description"
-                onChange={editFormik.handleChange}
-                value={editFormik.values.description}
-                fullWidth
-                margin="normal"
-              />
+              {/* Replace the edit TextField for description with this */}
+				<Typography variant="body2" sx={{ mt: 2, mb: 1 }}>Description</Typography>
+				<ReactQuill
+				  theme="snow"
+				  value={editFormik.values.description}
+				  onChange={(content) => editFormik.setFieldValue("description", content)}
+				/>
               {editFormik.errors.description && (
                 <Typography sx={{ color: "error.main" }}>
                   {editFormik.errors.description}
