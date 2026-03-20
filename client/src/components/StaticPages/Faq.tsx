@@ -33,7 +33,7 @@ const FAQ: FC<FAQProps> = (): ReactElement => {
         <CardMedia
           component="img"
           alt="FAQ"
-          src={faqbg}
+          src={123}
           sx={{ width: "100%" }}
         />
         <Typography
